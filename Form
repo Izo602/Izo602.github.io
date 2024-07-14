@@ -1,3 +1,4 @@
+<html>
 <form>
     <label for="appetizer1">Appetizer 1:</label>
     <input type="text" id="appetizer1" name="appetizer1" value="Bruschetta"><br><br>
