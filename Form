@@ -1,0 +1,33 @@
+<form>
+    <label for="appetizer1">Appetizer 1:</label>
+    <input type="text" id="appetizer1" name="appetizer1" value="Bruschetta"><br><br>
+    
+    <label for="appetizer2">Appetizer 2:</label>
+    <input type="text" id="appetizer2" name="appetizer2" value="Caesar Salad"><br><br>
+    
+    <label for="appetizer3">Appetizer 3:</label>
+    <input type="text" id="appetizer3" name="appetizer3" value="Shrimp Cocktail"><br><br>
+    
+    <label for="entree1">Entree 1:</label>
+    <input type="text" id="entree1" name="entree1" value="Grilled Salmon"><br><br>
+    
+    <label for="entree2">Entree 2:</label>
+    <input type="text" id="entree2" name="entree2" value="Filet Mignon"><br><br>
+    
+    <label for="entree3">Entree 3:</label>
+    <input type="text" id="entree3" name="entree3" value="Chicken Parmesan"><br><br>
+    
+    <label for="drink1">Drink 1:</label>
+    <input type="text" id="drink1" name="drink1" value="Mojito"><br><br>
+    
+    <label for="drink2">Drink 2:</label>
+    <input type="text" id="drink2" name="drink2" value="Cosmopolitan"><br><br>
+    
+    <label for="drink3">Drink 3:</label>
+    <input type="text" id="drink3" name="drink3" value="Old Fashioned"><br><br>
+    
+    <label for="dessert">Dessert:</label>
+    <input type="text" id="dessert" name="dessert" value="Tiramisu"><br><br>
+    
+    <input type="submit" value="Submit">
+</form>
