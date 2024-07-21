@@ -31,7 +31,9 @@ I am still very novice at coding but I am working to make a website surrounding 
         <option value="Potato Salad">Potato Salad</option>
         <option value="Cornbread">Cornbread</option>
     </select>
-    <span>$2.00</span><br><br>
+    <label for="sideQty">Qty:</label>
+    <input type="number" id="sideQty" name="sideQty" value="1" min="1" max="10">
+    <span>$2.00 each</span><br><br>
 
     <label for="entree">Entree:</label>
     <select id="entree" name="entree">
@@ -40,7 +42,9 @@ I am still very novice at coding but I am working to make a website surrounding 
         <option value="Neck Bone">Neck Bone</option>
         <option value="Fried Chicken">Fried Chicken</option>
     </select>
-    <span>$5.00</span><br><br>
+    <label for="entreeQty">Qty:</label>
+    <input type="number" id="entreeQty" name="entreeQty" value="1" min="1" max="10">
+    <span>$5.00 each</span><br><br>
 
     <label for="drink">Drink:</label>
     <select id="drink" name="drink">
@@ -49,7 +53,9 @@ I am still very novice at coding but I am working to make a website surrounding 
         <option value="Water">Water</option>
         <option value="Sun Tea">Sun Tea</option>
     </select>
-    <span>$3.00</span><br><br>
+    <label for="drinkQty">Qty:</label>
+    <input type="number" id="drinkQty" name="drinkQty" value="1" min="1" max="10">
+    <span>$3.00 each</span><br><br>
 
     <label for="dessert">Dessert:</label>
     <select id="dessert" name="dessert">
@@ -58,7 +64,9 @@ I am still very novice at coding but I am working to make a website surrounding 
         <option value="Apple Pie">Apple Pie</option>
         <option value="Chocolate Cake">Chocolate Cake</option>
     </select>
-    <span>$3.50</span><br><br>
+    <label for="dessertQty">Qty:</label>
+    <input type="number" id="dessertQty" name="dessertQty" value="1" min="1" max="10">
+    <span>$3.50 each</span><br><br>
 
     <label for="totalPrice">Total Price:</label>
     <span id="totalPrice">$0.00</span><br><br>
@@ -79,12 +87,12 @@ function calculateTotal() {
     const drinkPrice = 3.00;
     const dessertPrice = 3.50;
 
-    totalPrice = 0; // Reset total price before recalculating
-    if (document.getElementById('side').value !== '') totalPrice += sidePrice;
-    if (document.getElementById('entree').value !== '') totalPrice += entreePrice;
-    if (document.getElementById('drink').value !== '') totalPrice += drinkPrice;
-    if (document.getElementById('dessert').value !== '') totalPrice += dessertPrice;
+    const sideQty = parseInt(document.getElementById('sideQty').value);
+    const entreeQty = parseInt(document.getElementById('entreeQty').value);
+    const drinkQty = parseInt(document.getElementById('drinkQty').value);
+    const dessertQty = parseInt(document.getElementById('dessertQty').value);
 
+    totalPrice = sidePrice * sideQty + entreePrice * entreeQty + drinkPrice * drinkQty + dessertPrice * dessertQty;
     document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
 }
 
@@ -95,15 +103,21 @@ function addOrder() {
     const dessert = document.getElementById('dessert').value;
 
     if (side !== '' || entree !== '' || drink !== '' || dessert !== '') {
+        const sideQty = document.getElementById('sideQty').value;
+        const entreeQty = document.getElementById('entreeQty').value;
+        const drinkQty = document.getElementById('drinkQty').value;
+        const dessertQty = document.getElementById('dessertQty').value;
+
         const orderList = document.getElementById('orderList');
         const orderItem = document.createElement('li');
-        orderItem.textContent = `Side: ${side} - $2.00, Entree: ${entree} - $5.00, Drink: ${drink} - $3.00, Dessert: ${dessert} - $3.50`;
+        orderItem.textContent = `Side: ${side} x${sideQty} - $${(2.00 * sideQty).toFixed(2)}, Entree: ${entree} x${entreeQty} - $${(5.00 * entreeQty).toFixed(2)}, Drink: ${drink} x${drinkQty} - $${(3.00 * drinkQty).toFixed(2)}, Dessert: ${dessert} x${dessertQty} - $${(3.50 * dessertQty).toFixed(2)}`;
         orderList.appendChild(orderItem);
 
         calculateTotal(); // Recalculate total price
     }
 }
 </script>
+
 
 
  
