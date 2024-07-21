@@ -25,38 +25,61 @@ I am still very novice at coding but I am working to make a website surrounding 
  
 </body>
 
-   <form>
-    <label for="side1">Side 1:</label>
-    <input type="text" id="Side1" name="side1" value="Collard Greens"><br><br>
-    
-    <label for="side2">Side 2:</label>
-    <input type="text" id="Side2" name="side2" value="Potatoe Salad"><br><br>
-    
-    <label for="side3">Side 3:</label>
-    <input type="text" id="side3" name="side3" value="Corn bread"><br><br>
-    
-    <label for="entree1">Entree 1:</label>
-    <input type="text" id="entree1" name="entree1" value="Cat Fish"><br><br>
-    
-    <label for="entree2">Entree 2:</label>
-    <input type="text" id="entree2" name="entree2" value="Neck Bone"><br><br>
-    
-    <label for="entree3">Entree 3:</label>
-    <input type="text" id="entree3" name="entree3" value="Fried Chicken"><br><br>
-    
-    <label for="drink1">Drink 1:</label>
-    <input type="text" id="drink1" name="drink1" value="Fizzy Punch"><br><br>
-    
-    <label for="drink2">Drink 2:</label>
-    <input type="text" id="drink2" name="drink2" value="Water"><br><br>
-    
-    <label for="drink3">Drink 3:</label>
-    <input type="text" id="drink3" name="drink3" value="Sun Tea"><br><br>
-    
+  <form id="menuForm">
+    <label for="side">Side:</label>
+    <select id="side" name="side">
+        <option value="Collard Greens">Collard Greens</option>
+        <option value="Potato Salad">Potato Salad</option>
+        <option value="Cornbread">Cornbread</option>
+    </select>
+    <span>$2.00</span><br><br>
+
+    <label for="entree">Entree:</label>
+    <select id="entree" name="entree">
+        <option value="Cat Fish">Cat Fish</option>
+        <option value="Neck Bone">Neck Bone</option>
+        <option value="Fried Chicken">Fried Chicken</option>
+    </select>
+    <span>$5.00</span><br><br>
+
+    <label for="drink">Drink:</label>
+    <select id="drink" name="drink">
+        <option value="Fizzy Punch">Fizzy Punch</option>
+        <option value="Water">Water</option>
+        <option value="Sun Tea">Sun Tea</option>
+    </select>
+    <span>$3.00</span><br><br>
+
     <label for="dessert">Dessert:</label>
-    <input type="text" id="dessert" name="dessert" value="Peach Cobbler"><br><br>
-    
-    <input type="submit" value="Submit">
-</form> 
+    <select id="dessert" name="dessert">
+        <option value="Peach Cobbler">Peach Cobbler</option>
+        <option value="Apple Pie">Apple Pie</option>
+        <option value="Chocolate Cake">Chocolate Cake</option>
+    </select>
+    <span>$3.50</span><br><br>
+
+    <label for="totalPrice">Total Price:</label>
+    <span id="totalPrice">$0.00</span><br><br>
+
+    <input type="button" value="Calculate Total Price" onclick="calculateTotal()">
+</form>
+
+<script>
+function calculateTotal() {
+    const sidePrice = 2.00;
+    const entreePrice = 5.00;
+    const drinkPrice = 3.00;
+    const dessertPrice = 3.50;
+
+    const side = document.getElementById('side').value;
+    const entree = document.getElementById('entree').value;
+    const drink = document.getElementById('drink').value;
+    const dessert = document.getElementById('dessert').value;
+
+    let totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
+    document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+}
+</script>
+ 
 
 </html>
