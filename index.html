@@ -23,11 +23,10 @@ I am still very novice at coding but I am working to make a website surrounding 
 
 
  
-</body>
-
-  <form id="menuForm">
+<form id="menuForm">
     <label for="side">Side:</label>
     <select id="side" name="side">
+        <option value="">Choose a side</option>
         <option value="Collard Greens">Collard Greens</option>
         <option value="Potato Salad">Potato Salad</option>
         <option value="Cornbread">Cornbread</option>
@@ -36,6 +35,7 @@ I am still very novice at coding but I am working to make a website surrounding 
 
     <label for="entree">Entree:</label>
     <select id="entree" name="entree">
+        <option value="">Choose an entree</option>
         <option value="Cat Fish">Cat Fish</option>
         <option value="Neck Bone">Neck Bone</option>
         <option value="Fried Chicken">Fried Chicken</option>
@@ -44,6 +44,7 @@ I am still very novice at coding but I am working to make a website surrounding 
 
     <label for="drink">Drink:</label>
     <select id="drink" name="drink">
+        <option value="">Choose a drink</option>
         <option value="Fizzy Punch">Fizzy Punch</option>
         <option value="Water">Water</option>
         <option value="Sun Tea">Sun Tea</option>
@@ -52,6 +53,7 @@ I am still very novice at coding but I am working to make a website surrounding 
 
     <label for="dessert">Dessert:</label>
     <select id="dessert" name="dessert">
+        <option value="">Choose a dessert</option>
         <option value="Peach Cobbler">Peach Cobbler</option>
         <option value="Apple Pie">Apple Pie</option>
         <option value="Chocolate Cake">Chocolate Cake</option>
@@ -69,13 +71,15 @@ I am still very novice at coding but I am working to make a website surrounding 
 </form>
 
 <script>
+let totalPrice = 0.00;
+
 function calculateTotal() {
     const sidePrice = 2.00;
     const entreePrice = 5.00;
     const drinkPrice = 3.00;
     const dessertPrice = 3.50;
 
-    const totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
+    totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
     document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
 }
 
@@ -85,19 +89,20 @@ function addOrder() {
     const drink = document.getElementById('drink').value;
     const dessert = document.getElementById('dessert').value;
 
+    if (side === '' || entree === '' || drink === '' || dessert === '') {
+        alert('Please select an option for each category.');
+        return;
+    }
+
     const orderList = document.getElementById('orderList');
     const orderItem = document.createElement('li');
     orderItem.textContent = `Side: ${side} - $2.00, Entree: ${entree} - $5.00, Drink: ${drink} - $3.00, Dessert: ${dessert} - $3.50`;
     orderList.appendChild(orderItem);
 
-    // Reset form fields and total price after adding an order
-    document.getElementById('side').selectedIndex = 0;
-    document.getElementById('entree').selectedIndex = 0;
-    document.getElementById('drink').selectedIndex = 0;
-    document.getElementById('dessert').selectedIndex = 0;
-    document.getElementById('totalPrice').textContent = '$0.00';
+    document.getElementById('totalPrice').textContent = '$' + (parseFloat(totalPrice) + 13.50 * orderList.childElementCount).toFixed(2);
 }
 </script>
+
  
 
 </html>
