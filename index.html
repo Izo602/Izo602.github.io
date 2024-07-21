@@ -79,7 +79,12 @@ function calculateTotal() {
     const drinkPrice = 3.00;
     const dessertPrice = 3.50;
 
-    totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
+    totalPrice = 0; // Reset total price before recalculating
+    if (document.getElementById('side').value !== '') totalPrice += sidePrice;
+    if (document.getElementById('entree').value !== '') totalPrice += entreePrice;
+    if (document.getElementById('drink').value !== '') totalPrice += drinkPrice;
+    if (document.getElementById('dessert').value !== '') totalPrice += dessertPrice;
+
     document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
 }
 
@@ -89,19 +94,17 @@ function addOrder() {
     const drink = document.getElementById('drink').value;
     const dessert = document.getElementById('dessert').value;
 
-    if (side === '' || entree === '' || drink === '' || dessert === '') {
-        alert('Please select an option for each category.');
-        return;
+    if (side !== '' || entree !== '' || drink !== '' || dessert !== '') {
+        const orderList = document.getElementById('orderList');
+        const orderItem = document.createElement('li');
+        orderItem.textContent = `Side: ${side} - $2.00, Entree: ${entree} - $5.00, Drink: ${drink} - $3.00, Dessert: ${dessert} - $3.50`;
+        orderList.appendChild(orderItem);
+
+        calculateTotal(); // Recalculate total price
     }
-
-    const orderList = document.getElementById('orderList');
-    const orderItem = document.createElement('li');
-    orderItem.textContent = `Side: ${side} - $2.00, Entree: ${entree} - $5.00, Drink: ${drink} - $3.00, Dessert: ${dessert} - $3.50`;
-    orderList.appendChild(orderItem);
-
-    document.getElementById('totalPrice').textContent = '$' + (parseFloat(totalPrice) + 13.50 * orderList.childElementCount).toFixed(2);
 }
 </script>
+
 
  
 
