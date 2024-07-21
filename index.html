@@ -62,6 +62,10 @@ I am still very novice at coding but I am working to make a website surrounding 
     <span id="totalPrice">$0.00</span><br><br>
 
     <input type="button" value="Calculate Total Price" onclick="calculateTotal()">
+    <br><br>
+    
+    <input type="button" value="Add Order" onclick="addOrder()">
+    <ul id="orderList"></ul>
 </form>
 
 <script>
@@ -71,13 +75,27 @@ function calculateTotal() {
     const drinkPrice = 3.00;
     const dessertPrice = 3.50;
 
+    const totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
+    document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+}
+
+function addOrder() {
     const side = document.getElementById('side').value;
     const entree = document.getElementById('entree').value;
     const drink = document.getElementById('drink').value;
     const dessert = document.getElementById('dessert').value;
 
-    let totalPrice = sidePrice + entreePrice + drinkPrice + dessertPrice;
-    document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+    const orderList = document.getElementById('orderList');
+    const orderItem = document.createElement('li');
+    orderItem.textContent = `Side: ${side} - $2.00, Entree: ${entree} - $5.00, Drink: ${drink} - $3.00, Dessert: ${dessert} - $3.50`;
+    orderList.appendChild(orderItem);
+
+    // Reset form fields and total price after adding an order
+    document.getElementById('side').selectedIndex = 0;
+    document.getElementById('entree').selectedIndex = 0;
+    document.getElementById('drink').selectedIndex = 0;
+    document.getElementById('dessert').selectedIndex = 0;
+    document.getElementById('totalPrice').textContent = '$0.00';
 }
 </script>
  
