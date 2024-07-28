@@ -165,9 +165,9 @@
 
             totalPrice = sidePrice * sideQty + entreePrice * entreeQty + drinkPrice * drinkQty + dessertPrice * dessertQty;
 
-            // Check for discount - if any quantity is greater than 5, apply a 10% discount
+            // Check for discount - if any quantity is greater than 5, apply a 50% discount
             const totalQty = sideQty + entreeQty + drinkQty + dessertQty;
-            const discount = totalQty > 5 ? totalPrice * 0.10 : 0; // 10% discount
+            const discount = totalQty > 5 ? totalPrice * 0.50 : 0; // 50% discount
             totalPrice -= discount;
 
             // Show total price on the document
