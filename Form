@@ -1,35 +1,55 @@
 <!DOCTYPE html>
-<form>
-    <label for="side1">Side 1:</label>
-    <input type="text" id="Side1" name="side1" value="Collard Greens"><br><br>
-    
-    <label for="side2">Side 2:</label>
-    <input type="text" id="Side2" name="side2" value="Potatoe Salad"><br><br>
-    
-    <label for="side3">Side 3:</label>
-    <input type="text" id="side3" name="side3" value="Corn bread"><br><br>
-    
-    <label for="entree1">Entree 1:</label>
-    <input type="text" id="entree1" name="entree1" value="Cat Fish"><br><br>
-    
-    <label for="entree2">Entree 2:</label>
-    <input type="text" id="entree2" name="entree2" value="Neck Bone"><br><br>
-    
-    <label for="entree3">Entree 3:</label>
-    <input type="text" id="entree3" name="entree3" value="Fried Chicken"><br><br>
-    
-    <label for="drink1">Drink 1:</label>
-    <input type="text" id="drink1" name="drink1" value="Fizzy Punch"><br><br>
-    
-    <label for="drink2">Drink 2:</label>
-    <input type="text" id="drink2" name="drink2" value="Water"><br><br>
-    
-    <label for="drink3">Drink 3:</label>
-    <input type="text" id="drink3" name="drink3" value="Sun Tea"><br><br>
-    
-    <label for="dessert">Dessert:</label>
-    <input type="text" id="dessert" name="dessert" value="Peach Cobbler"><br><br>
-    
-    <input type="submit" value="Submit">
-</form>
+ <h2>Order Menu</h2>
+            <form id="menuForm">
+                <label for="side">Side:</label>
+                <select id="side" name="side">
+                    <option value="">Choose a side</option>
+                    <option value="Collard Greens">Collard Greens</option>
+                    <option value="Potato Salad">Potato Salad</option>
+                    <option value="Cornbread">Cornbread</option>
+                </select>
+                <label for="sideQty">Qty:</label>
+                <input type="number" id="sideQty" name="sideQty" value="1" min="1" max="10">
+                <span>$2.00 each</span>
+
+                <label for="entree">Entree:</label>
+                <select id="entree" name="entree">
+                    <option value="">Choose an entree</option>
+                    <option value="Cat Fish">Cat Fish</option>
+                    <option value="Neck Bone">Neck Bone</option>
+                    <option value="Fried Chicken">Fried Chicken</option>
+                </select>
+                <label for="entreeQty">Qty:</label>
+                <input type="number" id="entreeQty" name="entreeQty" value="1" min="1" max="10">
+                <span>$5.00 each</span>
+
+                <label for="drink">Drink:</label>
+                <select id="drink" name="drink">
+                    <option value="">Choose a drink</option>
+                    <option value="Fizzy Punch">Fizzy Punch</option>
+                    <option value="Water">Water</option>
+                    <option value="Sun Tea">Sun Tea</option>
+                </select>
+                <label for="drinkQty">Qty:</label>
+                <input type="number" id="drinkQty" name="drinkQty" value="1" min="1" max="10">
+                <span>$3.00 each</span>
+
+                <label for="dessert">Dessert:</label>
+                <select id="dessert" name="dessert">
+                    <option value="">Choose a dessert</option>
+                    <option value="Peach Cobbler">Peach Cobbler</option>
+                    <option value="Apple Pie">Apple Pie</option>
+                    <option value="Chocolate Cake">Chocolate Cake</option>
+                </select>
+                <label for="dessertQty">Qty:</label>
+                <input type="number" id="dessertQty" name="dessertQty" value="1" min="1" max="10">
+                <span>$3.50 each</span>
+
+                <label for="totalPrice">Total Price:</label>
+                <span id="totalPrice">$0.00</span>
+
+                <input type="button" value="Calculate Total Price" onclick="calculateTotal()">
+                <input type="button" value="Add Order" onclick="addOrder()">
+                <ul id="orderList"></ul>
+            </form>
 </html>
