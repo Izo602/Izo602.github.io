@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        header {
+            background: #000000;
+            color: #b22222;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        video, audio {
+            width: 100%;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #b22222;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #ff6347;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Multimedia Gallery</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Images</h2>
+            <img src="https://cdn.aaihs.org/wp-content/uploads/2024/02/shutterstock_2218405999-scaled.jpg" alt="Soulfood spread">
+            <img src="https://www.istockphoto.com/de/foto/gruppe-betrunkener-junger-leute-die-laut-am-grilltisch-singen-wein-und-bier-trinken-gm1397676373-452030037?searchscope=image%2Cfilm" alt="Celebrating food with smiles">
+        </section>
+        
+        <section>
+            <h2>Videos</h2>
+            <video controls>
+                <source src="https://www.youtube.com/shorts/bnfpNHo0nNQ">
+                
+            </video>
+        </section>
+
+        <section>
+            <h2>Links to Resources</h2>
+            <p>Check out these resources:</p>
+            <ul>
+                <li><a href="https://www.instagram.com/hintoflove_04/">Resource Link 1</a></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
