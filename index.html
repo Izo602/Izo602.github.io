@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Dancing Script', cursive; /* Change to Dancing Script */
+            font-family: 'Dancing Script', cursive;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4; /* Light background color */
@@ -22,14 +22,35 @@
             margin: 0;
             font-size: 2.5em;
         }
+        nav {
+            background-color: #ff6347; /* Tomato color for navigation */
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+        nav ul li {
+            display: inline; /* Display links in a row */
+            margin: 0 15px; /* Space between each link */
+        }
+        nav ul li a {
+            color: white; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make text bold */
+        }
+        nav ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
         main {
             max-width: 800px;
-            margin: 20px auto; /* Centering the main content */
+            margin: 20px auto; /* Centered */
             padding: 20px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Centering text inside the main section */
         }
         section {
             margin-bottom: 20px;
@@ -43,16 +64,6 @@
         h2 {
             color: #b22222; /* Darker red */
             margin-bottom: 10px;
-        }
-        a {
-            color: #ff6347; /* Tomato color */
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        form {
-            margin-top: 20px;
         }
         label {
             font-weight: bold;
@@ -97,6 +108,14 @@
     <header>
         <h1>Hint of Love</h1>
     </header>
+    
+    <nav>
+        <ul>
+            <li><a href="order-menu.html">Order Menu</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+        </ul>
+    </nav>
+
     <main>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2zWlQG1fCF6vUSitsT-ssoxhBrQfL7K0fEA&s" alt="Home Cooking" loading="lazy">
         
@@ -113,4 +132,3 @@
     </main>
 </body>
 </html>
-
