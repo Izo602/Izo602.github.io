@@ -23,9 +23,31 @@
             margin: 0;
             font-size: 2.5em;
         }
+        nav {
+            background-color: #ff6347; /* Tomato color for navigation */
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+        nav ul li {
+            display: inline; /* Display links in a row */
+            margin: 0 15px; /* Space between each link */
+        }
+        nav ul li a {
+            color: white; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make text bold */
+        }
+        nav ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
         main {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 20px auto; /* Centered */
             padding: 20px;
             background: white;
             border-radius: 8px;
@@ -89,12 +111,12 @@
     <header>
         <h1>Order Menu</h1>
     </header>
-        <nav>
-            <ul>
-                <li><a href="Izo602.github.io/index.html">Back to homepage</a></li>
-                <li><a href="Izo602.github.io/Multimedia.html">Multimedia</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <ul>
+            <li><a href="https://izo602.github.io/">Back to homepage</a></li>
+            <li><a href="https://izo602.github.io/Multimedia.html">Multimedia</a></li>
+        </ul>
+    </nav>
     <main>
         <section>
             <h2>Order Menu</h2>
@@ -170,9 +192,9 @@
 
             totalPrice = sidePrice * sideQty + entreePrice * entreeQty + drinkPrice * drinkQty + dessertPrice * dessertQty;
 
-            // Check for discount - if any quantity is greater than 5, apply a 50% discount
+            // Check for discount - if any quantity is greater than 5, apply a discount
             const totalQty = sideQty + entreeQty + drinkQty + dessertQty;
-            const discount = totalQty > 5 ? totalPrice * 0.50 : 0; // 50% discount
+            const discount = totalQty > 5 ? totalPrice * 0.10 : 0; // 10% discount
             totalPrice -= discount;
 
             // Show total price on the document
