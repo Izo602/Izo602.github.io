@@ -23,7 +23,7 @@
             <h2>Order Menu</h2>
             <form id="menuForm">
                 <label for="side">Side:</label>
-                <select id="side" name="side">
+                <select id="side" name="side" required> <!-- Added required for basic validation -->
                     <option value="">Choose a side</option>
                     <option value="Collard Greens">Collard Greens</option>
                     <option value="Potato Salad">Potato Salad</option>
@@ -34,7 +34,7 @@
                 <span>$2.00 each</span>
 
                 <label for="entree">Entree:</label>
-                <select id="entree" name="entree">
+                <select id="entree" name="entree" required> <!-- Added required for basic validation -->
                     <option value="">Choose an entree</option>
                     <option value="Cat Fish">Cat Fish</option>
                     <option value="Neck Bone">Neck Bone</option>
@@ -45,7 +45,7 @@
                 <span>$5.00 each</span>
 
                 <label for="drink">Drink:</label>
-                <select id="drink" name="drink">
+                <select id="drink" name="drink" required> <!-- Added required for basic validation -->
                     <option value="">Choose a drink</option>
                     <option value="Fizzy Punch">Fizzy Punch</option>
                     <option value="Water">Water</option>
@@ -56,7 +56,7 @@
                 <span>$3.00 each</span>
 
                 <label for="dessert">Dessert:</label>
-                <select id="dessert" name="dessert">
+                <select id="dessert" name="dessert" required> <!-- Added required for basic validation -->
                     <option value="">Choose a dessert</option>
                     <option value="Peach Cobbler">Peach Cobbler</option>
                     <option value="Apple Pie">Apple Pie</option>
@@ -68,7 +68,7 @@
 
                 <label for="totalPrice">Total Price:</label>
                 <span id="totalPrice">$0.00</span>
-                <div id="discountInfo" style="display: none;">Discount applied!</div> <!-- Discount info -->
+                <div id="discountInfo" class="hidden">Discount applied!</div> <!-- Use class instead of inline style -->
 
                 <input type="button" value="Calculate Total Price" onclick="calculateTotal()">
                 <input type="button" value="Add Order" onclick="addOrder()">
