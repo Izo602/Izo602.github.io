@@ -74,6 +74,10 @@
 
                 <input type="button" value="Calculate Total Price" onclick="calculateCombinedTotal()">
                 <input type="button" value="Add Order" onclick="addOrder()">
+                
+                <!-- Display Total Price -->
+                <h3>Total Price: <span id="totalPrice">$0.00</span></h3>
+                
                 <ul id="orderList"></ul>
             </form>
         </section>
@@ -117,10 +121,12 @@
                 <span>$3.00 each</span>
 
                 <br>
-                <div id="brunchDiscountInfo" style="display: none;"><strong>Discount applied!</strong> Any 5 items will get you 50% off!</div>
-
                 <input type="button" value="Calculate Brunch Total Price" onclick="calculateBrunchTotal()">
                 <input type="button" value="Add Brunch Order" onclick="addBrunchOrder()">
+
+                <!-- Display Total Price for Brunch -->
+                <h3>Total Brunch Price: <span id="brunchTotalPrice">$0.00</span></h3>
+                
                 <ul id="brunchOrderList"></ul>
             </form>
         </section>
@@ -130,7 +136,7 @@
         let totalPrice = 0.00;
         let totalBrunchPrice = 0.00; // For brunch menu
 
-        function calculateTotal() {
+        function calculateCombinedTotal() {
             const sidePrice = 5.00; // Price for regular side
             const entreePrice = 20.00; // Price for regular entree
             const drinkPrice = 2.50; // Price for regular drink
@@ -177,7 +183,7 @@
             orderItem.textContent = `Side: ${side} x${sideQty} - $${(5.00 * sideQty).toFixed(2)}, Entree: ${entree} x${entreeQty} - $${(20.00 * entreeQty).toFixed(2)}, Drink: ${drink} x${drinkQty} - $${(2.50 * drinkQty).toFixed(2)}, Dessert: ${dessert} x${dessertQty} - $${(3.50 * dessertQty).toFixed(2)}`;
             orderList.appendChild(orderItem);
 
-            calculateTotal(); // Recalculate total price
+            calculateCombinedTotal(); // Recalculate total price
         }
 
         // Brunch Functions
@@ -197,7 +203,7 @@
             const discount = totalBrunchQty >= 5 ? totalBrunchPrice * 0.50 : 0; // 50% discount
             totalBrunchPrice -= discount;
 
-            // Show total price on the document
+            // Show total price for brunch on the document
             document.getElementById('brunchTotalPrice').textContent = '$' + totalBrunchPrice.toFixed(2);
 
             // Show discount information if applicable
