@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Menu - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.CSS">
+    <link rel="stylesheet" href="style.css"> <!-- Ensure correct case -->
 </head>
 <body>
     <header>
@@ -22,21 +22,22 @@
         <section>
             <h2>Order Menu</h2>
             <form id="menuForm">
+                <h3>Main Menu</h3>
+
                 <label for="side">Side:</label>
-                <select id="side" name="side" required> <!-- Added required for basic validation -->
+                <select id="side" name="side" required>
                     <option value="">Choose a side</option>
                     <option value="Baked Beans">Baked Beans</option>
                     <option value="Corn on the cob">Corn on the cob</option>
-                    <option value="Creamy Mashed potatoes">Creamy Mashed Potatoes</option>
+                    <option value="Creamy Mashed Potatoes">Creamy Mashed Potatoes</option>
                     <option value="Green Beans">Green Beans</option>
-                    
                 </select>
                 <label for="sideQty">Qty:</label>
                 <input type="number" id="sideQty" name="sideQty" value="1" min="1" max="10">
                 <span>$5.00 each</span>
 
                 <label for="entree">Entree:</label>
-                <select id="entree" name="entree" required> <!-- Added required for basic validation -->
+                <select id="entree" name="entree" required>
                     <option value="">Choose an entree</option>
                     <option value="Grilled Pork Chops">Grilled Pork Chops</option>
                     <option value="Smoked Ribs">Smoked Ribs</option>
@@ -47,7 +48,7 @@
                 <span>$20.00 each</span>
 
                 <label for="drink">Drink:</label>
-                <select id="drink" name="drink" required> <!-- Added required for basic validation -->
+                <select id="drink" name="drink" required>
                     <option value="">Choose a drink</option>
                     <option value="Water">Water</option>
                     <option value="Frozen Lemonade">Frozen Lemonade</option>
@@ -57,34 +58,79 @@
                 <span>$2.50 each</span>
 
                 <label for="dessert">Dessert:</label>
-                <select id="dessert" name="dessert" required> <!-- Added required for basic validation -->
+                <select id="dessert" name="dessert" required>
                     <option value="">Choose a dessert</option>
-                    <option value="Peach Cobbler">Peach Cobbler</option>
-                    <option value="Apple Pie">Apple Pie</option>
-                    <option value="Chocolate Cake">Chocolate Cake</option>
+                    <option value="Pound Cake">Pound Cake</option>
                 </select>
                 <label for="dessertQty">Qty:</label>
                 <input type="number" id="dessertQty" name="dessertQty" value="1" min="1" max="10">
                 <span>$3.50 each</span>
 
-                <label for="totalPrice">Total Price:</label>
-                <span id="totalPrice">$0.00</span>
-                <div id="discountInfo" class="hidden">Discount applied!</div> <!-- Use class instead of inline style -->
+                <br>
+                <div id="discountInfo" style="display: none;"><strong>Discount applied!</strong> Any 5 items will get you 50% off!</div>
 
                 <input type="button" value="Calculate Total Price" onclick="calculateTotal()">
                 <input type="button" value="Add Order" onclick="addOrder()">
                 <ul id="orderList"></ul>
             </form>
         </section>
+
+        <section>
+            <h2>Brunch Menu</h2>
+            <form id="brunchForm">
+                <h3>Brunch Options</h3>
+
+                <label for="brunchEntree">Entree:</label>
+                <select id="brunchEntree" name="brunchEntree" required>
+                    <option value="">Choose an entree</option>
+                    <option value="Chicken and Waffles">Chicken and Waffles</option>
+                    <option value="French Toast">French Toast</option>
+                    <option value="Shrimp 'n' Grits">Shrimp 'n' Grits</option>
+                </select>
+                <label for="brunchEntreeQty">Qty:</label>
+                <input type="number" id="brunchEntreeQty" name="brunchEntreeQty" value="1" min="1" max="10">
+                <span>$15.00 each</span>
+
+                <label for="brunchSide">Side:</label>
+                <select id="brunchSide" name="brunchSide" required>
+                    <option value="">Choose a side</option>
+                    <option value="Eggs">Eggs</option>
+                    <option value="Bacon">Bacon</option>
+                    <option value="Sausage">Sausage</option>
+                </select>
+                <label for="brunchSideQty">Qty:</label>
+                <input type="number" id="brunchSideQty" name="brunchSideQty" value="1" min="1" max="10">
+                <span>$5.00 each</span>
+
+                <label for="brunchDrink">Drink:</label>
+                <select id="brunchDrink" name="brunchDrink" required>
+                    <option value="">Choose a drink</option>
+                    <option value="Lemonade">Lemonade</option>
+                    <option value="Strawberry Pineapple Smoothie">Strawberry Pineapple Smoothie</option>
+                    <option value="Orange Juice">Orange Juice</option>
+                </select>
+                <label for="brunchDrinkQty">Qty:</label>
+                <input type="number" id="brunchDrinkQty" name="brunchDrinkQty" value="1" min="1" max="10">
+                <span>$3.00 each</span>
+
+                <br>
+                <div id="brunchDiscountInfo" style="display: none;"><strong>Discount applied!</strong> Any 5 items will get you 50% off!</div>
+
+                <input type="button" value="Calculate Brunch Total Price" onclick="calculateBrunchTotal()">
+                <input type="button" value="Add Brunch Order" onclick="addBrunchOrder()">
+                <ul id="brunchOrderList"></ul>
+            </form>
+        </section>
     </main>
 
     <script>
         let totalPrice = 0.00;
+        let totalBrunchPrice = 0.00; // For brunch menu
 
         function calculateTotal() {
-            const sidePrice = 2.00;
-            const entreePrice = 5.00;
-            const drinkPrice = 3.00;
+            const sidePrice = 5.00;
+            const entreePrice = 20.00;
+            const drinkPrice = 2.50;
             const dessertPrice = 3.50;
 
             const sideQty = parseInt(document.getElementById('sideQty').value);
@@ -92,11 +138,11 @@
             const drinkQty = parseInt(document.getElementById('drinkQty').value);
             const dessertQty = parseInt(document.getElementById('dessertQty').value);
 
-            totalPrice = sidePrice * sideQty + entreePrice * entreeQty + drinkPrice * drinkQty + dessertPrice * dessertQty;
+            totalPrice = (sidePrice * sideQty) + (entreePrice * entreeQty) + (drinkPrice * drinkQty) + (dessertPrice * dessertQty);
 
-            // Check for discount - if any quantity is greater than 5, apply a discount
+            // Check for discount - if any item total reaches 5 or more
             const totalQty = sideQty + entreeQty + drinkQty + dessertQty;
-            const discount = totalQty > 5 ? totalPrice * 0.10 : 0; // 10% discount
+            const discount = totalQty >= 5 ? totalPrice * 0.50 : 0; // 50% discount
             totalPrice -= discount;
 
             // Show total price on the document
@@ -117,18 +163,65 @@
                 return; // Prevent further execution
             }
 
-            const sideQty = document.getElementById('sideQty').value || 0; // Default to 0 if not selected
+            const sideQty = document.getElementById('sideQty').value || 0; 
             const entreeQty = document.getElementById('entreeQty').value || 0;
             const drinkQty = document.getElementById('drinkQty').value || 0;
             const dessertQty = document.getElementById('dessertQty').value || 0;
 
             const orderList = document.getElementById('orderList');
             const orderItem = document.createElement('li');
-            orderItem.textContent = `Side: ${side} x${sideQty} - $${(2.00 * sideQty).toFixed(2)}, Entree: ${entree} x${entreeQty} - $${(5.00 * entreeQty).toFixed(2)}, Drink: ${drink} x${drinkQty} - $${(3.00 * drinkQty).toFixed(2)}, Dessert: ${dessert} x${dessertQty} - $${(3.50 * dessertQty).toFixed(2)}`;
+            orderItem.textContent = `Side: ${side} x${sideQty} - $${(5.00 * sideQty).toFixed(2)}, Entree: ${entree} x${entreeQty} - $${(20.00 * entreeQty).toFixed(2)}, Drink: ${drink} x${drinkQty} - $${(2.50 * drinkQty).toFixed(2)}, Dessert: ${dessert} x${dessertQty} - $${(3.50 * dessertQty).toFixed(2)}`;
             orderList.appendChild(orderItem);
 
             calculateTotal(); // Recalculate total price
         }
+
+        // Brunch Functions
+        function calculateBrunchTotal() {
+            const brunchEntreePrice = 15.00; // Price for brunch entree
+            const brunchSidePrice = 5.00; // Price for brunch side
+            const brunchDrinkPrice = 3.00; // Price for brunch drink
+
+            const brunchEntreeQty = parseInt(document.getElementById('brunchEntreeQty').value);
+            const brunchSideQty = parseInt(document.getElementById('brunchSideQty').value);
+            const brunchDrinkQty = parseInt(document.getElementById('brunchDrinkQty').value);
+
+            totalBrunchPrice = (brunchEntreePrice * brunchEntreeQty) + (brunchSidePrice * brunchSideQty) + (brunchDrinkPrice * brunchDrinkQty);
+
+            // Check for discount - if any item total reaches 5 or more
+            const totalBrunchQty = brunchEntreeQty + brunchSideQty + brunchDrinkQty;
+            const discount = totalBrunchQty >= 5 ? totalBrunchPrice * 0.50 : 0; // 50% discount
+            totalBrunchPrice -= discount;
+
+            // Show total price on the document
+            document.getElementById('brunchTotalPrice').textContent = '$' + totalBrunchPrice.toFixed(2);
+
+            // Show discount information if applicable
+            document.getElementById('brunchDiscountInfo').style.display = discount > 0 ? 'block' : 'none';
+        }
+
+        function addBrunchOrder() {
+            const brunchEntree = document.getElementById('brunchEntree').value;
+            const brunchSide = document.getElementById('brunchSide').value;
+            const brunchDrink = document.getElementById('brunchDrink').value;
+
+            if (brunchEntree === '' && brunchSide === '' && brunchDrink === '') {
+                alert('Please select at least one item to add to your brunch order.');
+                return; // Prevent further execution
+            }
+
+            const brunchEntreeQty = document.getElementById('brunchEntreeQty').value || 0; 
+            const brunchSideQty = document.getElementById('brunchSideQty').value || 0;
+            const brunchDrinkQty = document.getElementById('brunchDrinkQty').value || 0;
+
+            const brunchOrderList = document.getElementById('brunchOrderList');
+            const brunchOrderItem = document.createElement('li');
+            brunchOrderItem.textContent = `Brunch Entree: ${brunchEntree} x${brunchEntreeQty} - $${(15.00 * brunchEntreeQty).toFixed(2)}, Side: ${brunchSide} x${brunchSideQty} - $${(5.00 * brunchSideQty).toFixed(2)}, Drink: ${brunchDrink} x${brunchDrinkQty} - $${(3.00 * brunchDrinkQty).toFixed(2)}`;
+            brunchOrderList.appendChild(brunchOrderItem);
+
+            calculateBrunchTotal(); // Recalculate total price
+        }
     </script>
 </body>
 </html>
+
