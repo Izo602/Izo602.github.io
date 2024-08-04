@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Menu - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.CSS"> <!-- Ensure correct case -->
+    <link rel="stylesheet" href="style.css"> <!-- Ensure correct case -->
 </head>
 <body>
     <header>
@@ -72,12 +72,7 @@
                 <br>
                 <div id="discountInfo" style="display: none;"><strong>Discount applied!</strong> Any 5 items will get you 50% off!</div>
 
-                <input type="button" value="Calculate Total Price" onclick="calculateCombinedTotal()">
                 <input type="button" value="Add Order" onclick="addOrder()">
-                
-                <!-- Display Total Price -->
-                <h3>Total Price: <span id="totalPrice">$0.00</span></h3>
-                
                 <ul id="orderList"></ul>
             </form>
         </section>
@@ -121,14 +116,15 @@
                 <span>$3.00 each</span>
 
                 <br>
-                <input type="button" value="Calculate Brunch Total Price" onclick="calculateBrunchTotal()">
                 <input type="button" value="Add Brunch Order" onclick="addBrunchOrder()">
-
-                <!-- Display Total Price for Brunch -->
-                <h3>Total Brunch Price: <span id="brunchTotalPrice">$0.00</span></h3>
-                
                 <ul id="brunchOrderList"></ul>
             </form>
+        </section>
+
+        <section>
+            <h2>Total Price for All Orders</h2>
+            <h3>Combined Total Price: <span id="combinedTotalPrice">$0.00</span></h3>
+            <input type="button" value="Calculate Total Price" onclick="calculateCombinedTotal()">
         </section>
     </main>
 
@@ -136,32 +132,47 @@
         let totalPrice = 0.00;
         let totalBrunchPrice = 0.00; // For brunch menu
 
+        // Function to calculate total for all orders added
         function calculateCombinedTotal() {
-            const sidePrice = 5.00; // Price for regular side
-            const entreePrice = 20.00; // Price for regular entree
-            const drinkPrice = 2.50; // Price for regular drink
-            const dessertPrice = 3.50; // Price for regular dessert
+            // Calculate the total price from orders in orderList
+            const orderItems = document.getElementById('orderList').children;
+            const brunchOrderItems = document.getElementById('brunchOrderList').children;
 
-            const sideQty = parseInt(document.getElementById('sideQty').value);
-            const entreeQty = parseInt(document.getElementById('entreeQty').value);
-            const drinkQty = parseInt(document.getElementById('drinkQty').value);
-            const dessertQty = parseInt(document.getElementById('dessertQty').value);
+            let combinedTotal = 0;
 
-            // Calculate total price based on quantities
-            totalPrice = (sidePrice * sideQty) + (entreePrice * entreeQty) + (drinkPrice * drinkQty) + (dessertPrice * dessertQty);
+            // Calculate total from main menu orders
+            for (let item of orderItems) {
+                // Extract numerical values from the text content and sum
+                const itemText = item.textContent;
+                const priceMatch = itemText.match(/-\s*\$([\d,.]+)/);
+                if (priceMatch) {
+                    combinedTotal += parseFloat(priceMatch[1]);
+                }
+            }
+            
+            // Calculate total from brunch menu orders
+            for (let item of brunchOrderItems) {
+                const itemText = item.textContent;
+                const priceMatch = itemText.match(/-\s*\$([\d,.]+)/);
+                if (priceMatch) {
+                    combinedTotal += parseFloat(priceMatch[1]);
+                }
+            }
 
             // Check for discount - need 5 items total to apply a discount
-            const totalQty = sideQty + entreeQty + drinkQty + dessertQty;
-            const discount = totalQty >= 5 ? totalPrice * 0.50 : 0; // 50% discount
-            totalPrice -= discount;
+            const totalOrderCount = orderItems.length + brunchOrderItems.length; // Total orders added
+            const discount = totalOrderCount >= 5 ? combinedTotal * 0.50 : 0; // 50% discount
+            combinedTotal -= discount;
 
-            // Show total price on the document
-            document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+            // Update combined total price display
+            document.getElementById('combinedTotalPrice').textContent = '$' + combinedTotal.toFixed(2);
 
             // Show discount information if applicable
-            document.getElementById('discountInfo').style.display = discount > 0 ? 'block' : 'none';
+            const discountInfo = totalOrderCount >= 5 ? 'Discount applied! Any 5 items will get you 50% off!' : '';
+            alert(discountInfo); // Show alert if discount is applied
         }
 
+        // Function to add order from the main menu
         function addOrder() {
             const side = document.getElementById('side').value;
             const entree = document.getElementById('entree').value;
@@ -173,7 +184,7 @@
                 return; // Prevent further execution
             }
 
-            const sideQty = document.getElementById('sideQty').value || 0; 
+            const sideQty = document.getElementById('sideQty').value || 0;
             const entreeQty = document.getElementById('entreeQty').value || 0;
             const drinkQty = document.getElementById('drinkQty').value || 0;
             const dessertQty = document.getElementById('dessertQty').value || 0;
@@ -182,34 +193,9 @@
             const orderItem = document.createElement('li');
             orderItem.textContent = `Side: ${side} x${sideQty} - $${(5.00 * sideQty).toFixed(2)}, Entree: ${entree} x${entreeQty} - $${(20.00 * entreeQty).toFixed(2)}, Drink: ${drink} x${drinkQty} - $${(2.50 * drinkQty).toFixed(2)}, Dessert: ${dessert} x${dessertQty} - $${(3.50 * dessertQty).toFixed(2)}`;
             orderList.appendChild(orderItem);
-
-            calculateCombinedTotal(); // Recalculate total price
         }
 
         // Brunch Functions
-        function calculateBrunchTotal() {
-            const brunchEntreePrice = 15.00; // Price for brunch entree
-            const brunchSidePrice = 5.00; // Price for brunch side
-            const brunchDrinkPrice = 3.00; // Price for brunch drink
-
-            const brunchEntreeQty = parseInt(document.getElementById('brunchEntreeQty').value);
-            const brunchSideQty = parseInt(document.getElementById('brunchSideQty').value);
-            const brunchDrinkQty = parseInt(document.getElementById('brunchDrinkQty').value);
-
-            totalBrunchPrice = (brunchEntreePrice * brunchEntreeQty) + (brunchSidePrice * brunchSideQty) + (brunchDrinkPrice * brunchDrinkQty);
-
-            // Check for discount - need 5 items total to apply a discount
-            const totalBrunchQty = brunchEntreeQty + brunchSideQty + brunchDrinkQty;
-            const discount = totalBrunchQty >= 5 ? totalBrunchPrice * 0.50 : 0; // 50% discount
-            totalBrunchPrice -= discount;
-
-            // Show total price for brunch on the document
-            document.getElementById('brunchTotalPrice').textContent = '$' + totalBrunchPrice.toFixed(2);
-
-            // Show discount information if applicable
-            document.getElementById('brunchDiscountInfo').style.display = discount > 0 ? 'block' : 'none';
-        }
-
         function addBrunchOrder() {
             const brunchEntree = document.getElementById('brunchEntree').value;
             const brunchSide = document.getElementById('brunchSide').value;
@@ -228,8 +214,6 @@
             const brunchOrderItem = document.createElement('li');
             brunchOrderItem.textContent = `Brunch Entree: ${brunchEntree} x${brunchEntreeQty} - $${(15.00 * brunchEntreeQty).toFixed(2)}, Side: ${brunchSide} x${brunchSideQty} - $${(5.00 * brunchSideQty).toFixed(2)}, Drink: ${brunchDrink} x${brunchDrinkQty} - $${(3.00 * brunchDrinkQty).toFixed(2)}`;
             brunchOrderList.appendChild(brunchOrderItem);
-
-            calculateBrunchTotal(); // Recalculate total price
         }
     </script>
 </body>
