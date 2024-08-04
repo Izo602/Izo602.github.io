@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.CSS"> <!-- Ensure correct case -->
+    <link rel="stylesheet" href="style.CSS"> <!-- Ensure correct file case -->
 </head>
 <body>
     <header>
@@ -23,29 +23,31 @@
     <main>
         <section>
             <h2>Food</h2>
-            <img src="Brunch.jpeg" alt="Brunch menu items">
-            <img src="Pork Chop.jpeg" alt="Pork Chop menu items">
-            <img src="Ribs.jpeg" alt="Ribs menu items">
+            <img src="Brunch.jpeg" alt="Brunch menu items" loading="lazy">
+            <img src="Pork_Chop.jpeg" alt="Pork Chop menu items" loading="lazy">
+            <img src="Ribs.jpeg" alt="Ribs menu items" loading="lazy">
         </section>
 
         <section>
             <h2>Experience</h2>
-            <img src="https://cdn.pixabay.com/photo/2016/03/09/09/06/food-1245468_1280.jpg" alt="Celebrating food with smiles">
+            <img src="https://cdn.pixabay.com/photo/2016/03/09/09/06/food-1245468_1280.jpg" alt="Celebrating food with smiles" loading="lazy">
         </section>
         
         <section>
             <h2>Videos</h2>
+
             <h3>Brunch Video</h3>
-            <video controls width="320">
+            <video controls style="width: 100%; max-width: 400px;">
                 <source src="Brunch.mov" type="video/mov">
-                Your browser does not support the video tag.
+                Your browser does not support the video tag. Please use a modern browser.
             </video>
 
             <h3>Burrito Video</h3>
-            <video controls width="320">
-                <source src="Burrito.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <video controls style="width: 100%; max-width: 400px;">
+                <source src="burrito.mp4" type="video/mp4">
+                Your browser does not support the video tag. Please use a modern browser.
             </video>
+            
         </section>
 
         <section>
@@ -56,9 +58,11 @@
             </ul>
         </section>
     </main>
+    
+    <footer>
+        <p>&copy; 2024 Isaiah Rivera. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 
-</body>
-</html>
 
